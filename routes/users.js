@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose')
 var User = require('../models/users')
 
-mongoose.connect('mongodb://47.104.156.124:36911/cdb')
+mongoose.connect('mongodb://120.79.206.52:36911/nigar')
 
 mongoose.connection.on('connected', () => {
     console.log("MongoDB connected success.")
@@ -23,7 +23,7 @@ router.get('/', function (req, res, next) {
 
 router.post('/login', (req, res, next) => {
     let param = {
-        userName: req.body.userName,
+        userName : req.body.userName ,
         userPwd: req.body.userPwd
     }
     User.findOne(param, (err, doc) => {
@@ -41,10 +41,10 @@ router.post('/login', (req, res, next) => {
                         list: doc
                     }
                 })
-            } else {
+            }else {
                 res.json({
                     status: 0,
-                    msg: false,
+                    msg: '你再输入错误我就报警了',
                     result: {
                         list: doc
                     }
